@@ -51,6 +51,23 @@ android {
 
 dependencies {
 
+    //ADDING DEPENDENCIES FOR OUR PROJECT MIGHT BE OLDER VERSIONS OF THEM
+
+    //dependency for Compose ViewModel
+    //It provides integration between Lifecycle ViewModel and Jetpack Compose, specifically designed for Android development.
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2");
+
+    //dependency for network call i.e to send request for data to api and to receive data from it
+    //t simplifies making HTTP calls to REST APIs by providing a type-safe interface.
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+
+    //JSON to kotlin object making as we receive JSON objects need to convert it to kotlin to work
+    //t integrates with Gson, a popular JSON parsing library, to automatically convert JSON data in the response body to your defined model objects in Java.
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    //to load image from database via link we obtain from response
+    //Coil Compose is an image loading library specifically designed for use with Jetpack Compose, the modern UI framework for Android. It leverages the capabilities of Coil, another popular image loading library for Android, to provide functionalities like asynchronous image loading, caching, and transformations within Jetpack Compose.
+    implementation("io.coil-kt:coil-compose:2.4.0")
 
 
 
