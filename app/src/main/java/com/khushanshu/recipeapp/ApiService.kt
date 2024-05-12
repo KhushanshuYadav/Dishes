@@ -68,6 +68,8 @@ Essentially, this line creates an instance of the ApiService interface using the
 
 In simpler terms, this part tells Retrofit: "Hey, I want to use the ApiService interface to define how I interact with the API. Use this interface to understand what API calls I can make and how to structure the requests and responses."
 */
+//recipeService is being used to expose the response
+//All methods of interface will be called or can be called on this object
 val recipeService= retrofit.create(ApiService::class.java)
 /*High level explaination (MUST)
 In high-level terms, the line val recipeService = retrofit.create(ApiService::class.java) acts like a translator between your application and TheMealDB API. Let's break it down step by step:
