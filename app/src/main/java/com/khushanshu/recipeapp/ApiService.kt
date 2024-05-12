@@ -48,7 +48,7 @@ In summary:
 
 This code snippet creates a private Retrofit client specifically configured to interact with TheMealDB API (version 1.1) using Gson for JSON data conversion. It provides a central point to make API requests throughout your application.
 */
-private val retrofit=Retrofit.Builder().baseUrl("https://www.themealdb.com/api/json/v1/1").addConverterFactory(GsonConverterFactory.create()).build()
+private val retrofit=Retrofit.Builder().baseUrl("https://www.themealdb.com/api/json/v1/1/").addConverterFactory(GsonConverterFactory.create()).build()
 
 
 //creating an implementation of an API service interface using the Retrofit instance
