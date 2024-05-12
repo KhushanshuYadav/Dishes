@@ -47,7 +47,7 @@ fun RecipeScreen(modifier: Modifier=Modifier){    //providing all default modifi
             }
             else->{
                 //here we want to display a lazy grid
-                CategoryScreen()
+                CategoryScreen(categories = viewState.list)
             }
         }
     }
