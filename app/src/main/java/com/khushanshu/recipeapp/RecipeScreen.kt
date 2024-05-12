@@ -72,7 +72,7 @@ fun CategoryItem(category: Category){
         .fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
 
         Image(
-            painter = rememberAsyncImagePainter(category.idCategory),
+            painter = rememberAsyncImagePainter(category.strCategoryThumb),
             contentDescription =null,
             modifier=Modifier.fillMaxSize().aspectRatio(1f)
         )

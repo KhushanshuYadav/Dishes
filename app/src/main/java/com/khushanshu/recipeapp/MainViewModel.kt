@@ -5,14 +5,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class MainViewModel:ViewModel() {
-    //below data class represents the state of the main screen (where we show categories) i.e we want to show the the elements of "list" property
-    //we define our own state
-    data class RecipeState(val loading:Boolean=true,
-                           val list:List<Category> = emptyList(),
-                           val error: String?=null
-    )
+
     //want to expose the categories as state i.e the list we obtain from API
     //need to check weather loaded or not and etc..
 
@@ -36,7 +32,7 @@ class MainViewModel:ViewModel() {
         viewModelScope.launch {
             try {
                 val response= recipeService.getCategories() //this response will have a list of "Category"
-                _categoriesState.value=_categoriesState.value.copy(loading = false, list = response.categories,error = null)  //changing the object i.e loaded
+                _categoriesState.value=_categoriesState.value.copy( list = response.categories,loading = false,error = null)  //changing the object i.e loaded
 
 
             } //if some exception occur during loading or fetching data i.e try block throws any exception
@@ -47,4 +43,11 @@ class MainViewModel:ViewModel() {
             }
         }
     }
+
+    //below data class represents the state of the main screen (where we show categories) i.e we want to show the the elements of "list" property
+    //we define our own state
+    data class RecipeState(val loading:Boolean=true,
+                           val list:List<Category> = emptyList(),
+                           val error: String?=null
+    )
 }

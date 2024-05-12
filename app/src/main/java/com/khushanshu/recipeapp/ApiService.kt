@@ -1,5 +1,6 @@
 package com.khushanshu.recipeapp
 
+import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
@@ -47,7 +48,7 @@ In summary:
 
 This code snippet creates a private Retrofit client specifically configured to interact with TheMealDB API (version 1.1) using Gson for JSON data conversion. It provides a central point to make API requests throughout your application.
 */
-private val retrofit=retrofit2.Retrofit.Builder().baseUrl("https://www.themealdb.com/api/json/v1/1").addConverterFactory(GsonConverterFactory.create()).build()
+private val retrofit=Retrofit.Builder().baseUrl("https://www.themealdb.com/api/json/v1/1").addConverterFactory(GsonConverterFactory.create()).build()
 
 
 //creating an implementation of an API service interface using the Retrofit instance
@@ -70,7 +71,7 @@ In simpler terms, this part tells Retrofit: "Hey, I want to use the ApiService i
 */
 //recipeService is being used to expose the response
 //All methods of interface will be called or can be called on this object
-val recipeService= retrofit.create(ApiService::class.java)
+         val recipeService= retrofit.create(ApiService::class.java)
 /*High level explaination (MUST)
 In high-level terms, the line val recipeService = retrofit.create(ApiService::class.java) acts like a translator between your application and TheMealDB API. Let's break it down step by step:
 
