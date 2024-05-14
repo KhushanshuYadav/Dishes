@@ -23,25 +23,35 @@ fun CategoryDetailScreen(category: Category){
         .fillMaxSize()
         .padding(16.dp)
         //.verticalScroll(rememberScrollState())
-        ,horizontalAlignment = Alignment.CenterHorizontally)
+        ,horizontalAlignment = Alignment.CenterHorizontally
+    )
     {
 
         Text(text = category.strCategory, textAlign = TextAlign.Center, fontWeight = FontWeight.Bold)
 
+        Column (modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+            .verticalScroll(rememberScrollState())
+            ,horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            Image(
+                painter = rememberAsyncImagePainter(category.strCategoryThumb),
+                contentDescription =null,
+                modifier= Modifier
+                    .wrapContentSize()
+                    .padding(8.dp)
+                    .aspectRatio(1f)
+            )
 
-        Image(
-            painter = rememberAsyncImagePainter(category.strCategoryThumb),
-            contentDescription =null,
-            modifier= Modifier
-                .wrapContentSize()
-                .padding(8.dp)
-                .aspectRatio(1f)
-        )
+            Text(text=category.strCategoryDescription,
+                textAlign = TextAlign.Justify,
+                //modifier = Modifier.verticalScroll(rememberScrollState())
+            )
+        }
 
-        Text(text=category.strCategoryDescription,
-            textAlign = TextAlign.Justify,
-            modifier = Modifier.verticalScroll(rememberScrollState())
-        )
+
+
 
 
 
