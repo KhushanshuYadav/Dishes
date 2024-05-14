@@ -1,13 +1,18 @@
 package com.khushanshu.recipeapp
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 //defining the blueprint or type or class of object "Category" of which we get list
 //properties same as JSON object response i.e by api see below the class
+//Also making it parcelabel
+@Parcelize
 data class Category(
     val idCategory:String,
     val strCategory:String,
     val strCategoryThumb:String,
     val strCategoryDescription:String
-)
+):Parcelable
 
 
 //Api response by link on MealDB page link=https://www.themealdb.com/api/json/v1/1/categories.php
