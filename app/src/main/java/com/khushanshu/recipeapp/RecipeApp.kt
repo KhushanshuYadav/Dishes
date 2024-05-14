@@ -29,6 +29,7 @@ fun RecipeApp(navController:NavHostController){
                       ?.savedStateHandle: This accesses the savedStateHandle associated with the current back stack entry. The savedStateHandle allows you to pass data between destinations while ensuring that the data is retained across configuration changes (such as screen rotations).
                       ?.set("cat", it): This sets a value into the savedStateHandle using the key "cat" and the value it. The it variable likely represents some data that you want to pass between destinations.
                     */
+                    //below line saves data
                     navController.currentBackStackEntry?.savedStateHandle?.set("cat",it)
 
                     navController.navigate(Screen.DetailScreen.route)
