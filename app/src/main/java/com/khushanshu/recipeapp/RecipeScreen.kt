@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -86,14 +87,15 @@ fun CategoryItem(category: Category, navigateToDetailScreen:(category:Category)-
             painter = rememberAsyncImagePainter(category.strCategoryThumb),
             contentDescription =null,
             modifier= Modifier
-                .padding(8.dp)
                 .fillMaxSize()
+                .padding(8.dp)
                 .aspectRatio(1f)
         )
 
         Text(
             text=category.strCategory,
-            color= Color.White,
+            //either add this or remove this color parameter to change it as per opposite if theme
+            color= MaterialTheme.colorScheme.onSurface,
             style = TextStyle(fontWeight = FontWeight.Bold),
             modifier = Modifier.padding(top=4.dp)
         )
