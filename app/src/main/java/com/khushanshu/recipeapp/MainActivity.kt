@@ -22,10 +22,17 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    RecipeScreen();
+                    //RecipeScreen();
                 }
             }
         }
     }
 }
 
+@Preview(showBackground = true)
+@Composable
+fun RecipeScreenPreview(){
+    RecipeAppTheme{
+        RecipeScreen()
+    }
+}

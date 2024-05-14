@@ -1,6 +1,7 @@
 package com.khushanshu.recipeapp
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
@@ -19,13 +20,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
+import com.khushanshu.recipeapp.ui.theme.RecipeAppTheme
 
 //the main Screen showing categories of foods
 @Composable
-fun RecipeScreen(modifier: Modifier=Modifier){    //providing all default modifiers as we created the composable
+fun RecipeScreen(modifier: Modifier=Modifier,navigateToDetailScreen:(category:Category)->Unit){    //providing all default modifiers as we created the composable And passing responsibility
     //using MainViewModel here
 
     val recipeViewModel:MainViewModel= viewModel()  //this returns the existing or owner given viewModel
@@ -47,7 +50,7 @@ fun RecipeScreen(modifier: Modifier=Modifier){    //providing all default modifi
             }
             else->{
                 //here we want to display a lazy grid
-                CategoryScreen(categories = viewState.list)
+                CategoryScreen(categories = viewState.list,navigateToDetailScreen)
             }
         }
     }
@@ -55,34 +58,51 @@ fun RecipeScreen(modifier: Modifier=Modifier){    //providing all default modifi
 
 @Composable
 //Below composable will display the items of list fetched from api of categories in a lazyGrid
-fun CategoryScreen(categories:List<Category>){
+//high level passing of navigateToSecondScreen of responsibility
+fun CategoryScreen(categories:List<Category>,navigateToDetailScreen:(category:Category)->Unit){
     LazyVerticalGrid( GridCells.Fixed(2), modifier = Modifier.fillMaxSize()){
         //the items of grid will have values of categories from list fetched
         items(categories){
             //below functions handles the object obtained from list and creates a item to display in one cell of grid
-             category -> CategoryItem(category=category) //first category i.e before equal is of parameter of CategoryItem i.e passing as default parameter
+             category -> CategoryItem(category=category, navigateToDetailScreen) //first category i.e before equal is of parameter of CategoryItem i.e passing as default parameter
         }
     }
 }
 @Composable
 //each cell will display a column of image and text below it obtained from object received from list
-fun CategoryItem(category: Category){
+
+//Passing the navigateToDetailScreen:(category:Category)->Unit  as from here we navigate to second screen
+//now we need to pass the responsibility to higher layers of UI i.e UI element (here CategoryItem)do not take care of implementation
+fun CategoryItem(category: Category, navigateToDetailScreen:(category:Category)->Unit ){
     Column(modifier = Modifier
         .padding(8.dp)
-        .fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
+        .fillMaxSize()
+        .clickable { navigateToDetailScreen(category ) }
+        , horizontalAlignment = Alignment.CenterHorizontally) {
 
         Image(
             painter = rememberAsyncImagePainter(category.strCategoryThumb),
             contentDescription =null,
-            modifier=Modifier.fillMaxSize().aspectRatio(1f)
+            modifier= Modifier
+                .padding(8.dp)
+                .fillMaxSize()
+                .aspectRatio(1f)
         )
 
         Text(
             text=category.strCategory,
-            color= Color.Black,
+            color= Color.White,
             style = TextStyle(fontWeight = FontWeight.Bold),
             modifier = Modifier.padding(top=4.dp)
         )
 
     }
 }
+
+/*@Preview(showBackground = true)
+@Composable
+fun RecipeScreenPreview(){
+    RecipeAppTheme{
+        RecipeScreen()
+    }
+}*/

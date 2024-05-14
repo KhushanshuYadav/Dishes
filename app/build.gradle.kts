@@ -51,6 +51,8 @@ android {
 
 dependencies {
 
+    implementation("androidx.navigation:navigation-compose:2.7.4")
+
     //ADDING DEPENDENCIES FOR OUR PROJECT MIGHT BE OLDER VERSIONS OF THEM
 
     //dependency for Compose ViewModel
