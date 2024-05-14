@@ -21,24 +21,36 @@ import coil.compose.rememberAsyncImagePainter
 fun CategoryDetailScreen(category: Category){
     Column(modifier = Modifier
         .fillMaxSize()
-        .padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally)
+        .padding(16.dp)
+        //.verticalScroll(rememberScrollState())
+        , horizontalAlignment = Alignment.CenterHorizontally)
     {
 
         Text(text = category.strCategory, textAlign = TextAlign.Center, fontWeight = FontWeight.Bold)
 
-        Image(
-            painter = rememberAsyncImagePainter(category.strCategoryThumb),
-            contentDescription =null,
-            modifier= Modifier
-                .wrapContentSize()
-                .padding(8.dp)
-                .aspectRatio(1f)
-        )
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+            .verticalScroll(rememberScrollState())
+            , horizontalAlignment = Alignment.CenterHorizontally)
+        {
+            Image(
+                painter = rememberAsyncImagePainter(category.strCategoryThumb),
+                contentDescription =null,
+                modifier= Modifier
+                    .wrapContentSize()
+                    .padding(8.dp)
+                    .aspectRatio(1f)
+            )
 
-        Text(text=category.strCategoryDescription,
-            textAlign = TextAlign.Justify,
-            modifier = Modifier.verticalScroll(rememberScrollState())
-        )
+            Text(text=category.strCategoryDescription,
+                textAlign = TextAlign.Justify,
+                //modifier = Modifier.verticalScroll(rememberScrollState())
+            )
+        }
+
+
+
 
 
 
