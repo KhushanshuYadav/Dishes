@@ -28,11 +28,13 @@ import com.khushanshu.recipeapp.ui.theme.RecipeAppTheme
 
 //the main Screen showing categories of foods
 @Composable
-fun RecipeScreen(modifier: Modifier=Modifier,navigateToDetailScreen:(category:Category)->Unit){    //providing all default modifiers as we created the composable And passing responsibility
-    //using MainViewModel here
+fun RecipeScreen(modifier: Modifier=Modifier,
+                 viewState:MainViewModel.RecipeState,
+                 navigateToDetailScreen:(category:Category)->Unit)
+//providing all default modifiers as we created the composable And passing responsibility And Passing viewState from RecipeApp.kt
+{
 
-    val recipeViewModel:MainViewModel= viewModel()  //this returns the existing or owner given viewModel
-    val viewState by recipeViewModel.categoriesState   //defining the state of this view
+
 
 
     Box(modifier = Modifier.fillMaxSize()){
