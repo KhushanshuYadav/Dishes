@@ -45,11 +45,12 @@ fun RecipeScreen(modifier: Modifier=Modifier,
         when{
             viewState.loading->{
                 //when loading show the loading icon
-                CircularProgressIndicator(modifier.align(Alignment.Center))
+                CircularProgressIndicator(modifier.align(Alignment.Center), color = MaterialTheme.colorScheme.onSurface)
             }
             viewState.error!=null->{
                 //means there is error
-                Text("ERROR IN LOADING")
+                Text("ERROR IN LOADING RESTART APP")
+
             }
             else->{
                 //here we want to display a lazy grid

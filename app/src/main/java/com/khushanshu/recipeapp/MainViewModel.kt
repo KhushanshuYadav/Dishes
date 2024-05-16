@@ -44,6 +44,10 @@ class MainViewModel:ViewModel() {
         }
     }
 
+
+
+
+
     //below data class represents the state of the main screen (where we show categories) i.e we want to show the the elements of "list" property
     //we define our own state
     data class RecipeState(val loading:Boolean=true,
