@@ -17,6 +17,8 @@ descriptions when clicked on it.
 **Backend :** Kotlin, Jetpack Compose (Navigation), Retrofit(API communication)
 
 ## Demo
+https://github.com/user-attachments/assets/884184ab-2131-4c2b-b694-64a50996d085
+
 
 # Hi, I'm Khushanshu! 👋
 
